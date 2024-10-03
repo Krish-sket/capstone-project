@@ -71,3 +71,37 @@ FROM orders
 JOIN customer ON orders.customer_id=customer.customer_id
 JOIN salesman ON orders.customer_id=salesman.salesman_id
 WHERE customer.city <> salesman.city;
+
+--fetching all orders with customer names
+SELECT orders.ord_no, customer.cust_name
+FROM orders
+JOIN customer ON orders.customer_id=customer.customer_id
+
+--customers with grades
+SELECT customer.cust_name AS 'customer', customer.grade
+AS 'grade'
+FROM orders
+JOIN salesman ON orders.salesman_id=
+salesman.salesman_id
+JOIN customers ON order.customer_id=
+customer.customer_id
+WHERE customer.grade IS NOT NULL;
+
+SELECT customer.cust_name AS 'customer',
+customer.city AS 'city',
+salesman.name AS 'salesman',
+salesman.commision
+FROM customer
+JOIN salesman.commision BETWEEN 0.12 AND 0.14;
+
+SELECT orders.ord_no, customer.cust_name,
+salesman.commision AS 'commision%',
+orders.purch_amt * salesman.commision AS 'commision'
+FROM orders
+JOIN salesman ON orders.salesman_id=salesman.salesman_id
+JOIN customer ON orders.customer_id= customer.customer_id
+WHERE customer.grade>=200;
+
+SELECT * FROM customer
+JOIN orders ON customer.customer_id = Orders.customer_id
+WHERE orders.ord_date = '2012-10-05';
